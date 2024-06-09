@@ -8,7 +8,8 @@ import com.example.demo.modelo.Club;
 @Repository
 public interface ClubRepository extends JpaRepository<Club, Integer> {
 
-	Optional<Club> findById_Club(int doc);
+	Optional<Club> findById_Club(Integer doc);
+	Optional<Club> findByNombre(String nombre);
 
 	void deleteByIdClub(int idclub);
 

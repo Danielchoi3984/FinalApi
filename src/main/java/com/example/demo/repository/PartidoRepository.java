@@ -9,8 +9,9 @@ import com.example.demo.modelo.Partido;
 public interface PartidoRepository extends JpaRepository<Partido, Integer>{
 
 	Optional<Partido> findById_Partido(int idpartido);
-
+    
 	void deleteById_Partido(int idpartido);
+	
 
 }
 
