@@ -22,12 +22,17 @@ public class Partido {
 	private Integer idpartido;
 	@Column(name="NroFecha")
 	private Integer nrofecha;
-	@Column(name="Nombre")
-	private String nombre;
-	@Column(name="Fecha_Nac")
-	private Date fechanac;
+	@Column(name="NroZona")
+	private Integer nrozona;
+	@Column(name="fechaPartido")
+	private Date fechapartido;
 	@Column(name="Categoria")
 	private String categoria;
+
+	@Column(name="GolesV")
+	private Integer golesV;
+	@Column(name="GolesL")
+	private Integer golesL;
 	@ManyToOne
     @JoinColumn(name = "Id_ClubV", referencedColumnName = "idClub")
     private Club clubVisitante;
@@ -35,24 +40,51 @@ public class Partido {
     @JoinColumn(name = "Id_ClubL", referencedColumnName = "idClub")
     private Club clubLocal;
     public Partido() {}
-	public Partido( Integer nrofecha, String nombre, Date fechanac, String categoria,
-			Club clubVisitante, Club clubLocal) {
+
+	public Integer getNrozona() {
+		return nrozona;
+	}
+	public void setNrozona(Integer nrozona) {
+		this.nrozona = nrozona;
+	}
+	public Date getFechapartido() {
+		return fechapartido;
+	}
+	public void setFechapartido(Date fechapartido) {
+		this.fechapartido = fechapartido;
+	}
+	public Integer getGolesV() {
+		return golesV;
+	}
+	public void setGolesV(Integer golesV) {
+		this.golesV = golesV;
+	}
+	public Integer getGolesL() {
+		return golesL;
+	}
+	public void setGolesL(Integer golesL) {
+		this.golesL = golesL;
+	}
+	
+	public Partido(Integer idpartido, Integer nrofecha, Integer nrozona, Date fechapartido, String categoria,
+			Integer golesV, Integer golesL, Club clubVisitante, Club clubLocal) {
 		super();
-		
+		this.idpartido = idpartido;
 		this.nrofecha = nrofecha;
-		this.nombre = nombre;
-		this.fechanac = fechanac;
+		this.nrozona = nrozona;
+		this.fechapartido = fechapartido;
 		this.categoria = categoria;
+		this.golesV = golesV;
+		this.golesL = golesL;
 		this.clubVisitante = clubVisitante;
 		this.clubLocal = clubLocal;
 	}
 	@Override
 	public String toString() {
-		return "Partido [idpartido=" + idpartido + ", nrofecha=" + nrofecha + ", nombre=" + nombre + ", fechanac="
-				+ fechanac + ", categoria=" + categoria + ", clubVisitante=" + clubVisitante + ", clubLocal="
-				+ clubLocal + "]";
+		return "Partido [idpartido=" + idpartido + ", nrofecha=" + nrofecha + ", nrozona=" + nrozona + ", fechapartido="
+				+ fechapartido + ", categoria=" + categoria + ", golesV=" + golesV + ", golesL=" + golesL
+				+ ", clubVisitante=" + clubVisitante + ", clubLocal=" + clubLocal + "]";
 	}
-	
 	public Integer getIdpartido() {
 		return idpartido;
 	}
@@ -64,18 +96,6 @@ public class Partido {
 	}
 	public void setNrofecha(Integer nrofecha) {
 		this.nrofecha = nrofecha;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public Date getFechanac() {
-		return fechanac;
-	}
-	public void setFechanac(Date fechanac) {
-		this.fechanac = fechanac;
 	}
 	public String getCategoria() {
 		return categoria;
