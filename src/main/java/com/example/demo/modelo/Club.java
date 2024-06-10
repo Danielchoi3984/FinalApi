@@ -23,6 +23,14 @@ public class Club {
 	
 	@Column(name="Nombre")
 	private String nombre;
+	@Column(name="NroZona")
+	private Integer nrozona;
+	public Integer getNrozona() {
+		return nrozona;
+	}
+	public void setNrozona(Integer nrozona) {
+		this.nrozona = nrozona;
+	}
 	@ManyToOne
     @OneToMany(mappedBy = "clubVisitante")
     private List<Partido> partidosVisitante;
@@ -61,18 +69,17 @@ public class Club {
 	public void setJugadores(List<Jugador> jugadores) {
 		this.jugadores = jugadores;
 	}
-	@Override
-	public String toString() {
-		return "Club [idclub=" + idclub + ", nombre=" + nombre + ", partidosVisitante=" + partidosVisitante
-				+ ", partidosLocal=" + partidosLocal + ", jugadores=" + jugadores + "]";
-	}
-	public Club(String nombre, List<Partido> partidosVisitante, List<Partido> partidosLocal, List<Jugador> jugadores) {
+	public Club(Integer idclub, String nombre, Integer nrozona, List<Partido> partidosVisitante,
+			List<Partido> partidosLocal, List<Jugador> jugadores) {
 		super();
+		this.idclub = idclub;
 		this.nombre = nombre;
+		this.nrozona = nrozona;
 		this.partidosVisitante = partidosVisitante;
 		this.partidosLocal = partidosLocal;
 		this.jugadores = jugadores;
 	}
+	
 	
 
 

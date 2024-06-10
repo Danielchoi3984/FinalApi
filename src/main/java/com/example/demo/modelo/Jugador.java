@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 public class Jugador {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Tipodoc")
 	private Integer tipodoc;
 

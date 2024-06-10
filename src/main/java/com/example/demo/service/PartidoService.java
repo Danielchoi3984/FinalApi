@@ -28,7 +28,13 @@ public class PartidoService {
 
     // Crear o actualizar un partido
     public Partido guardarPartido(Partido partido) {
-        return repositorio.save(partido);
+    	if (partido.getClubLocal()  !=partido.getClubVisitante() && partido.getClubVisitante().getNrozona()== partido.getClubLocal().getNrozona())
+    	{
+    		return repositorio.save(partido);	
+    	}
+    	else {
+    		  throw new RuntimeException("El partido no se puede hacer ya que los clubes son de distintas zonas ");
+    	}
     }
     public Partido actualizarPartido(int idpartido, Partido detallesPartido) {
         Optional<Partido> partidoExistente = repositorio.findById_Partido(idpartido);
